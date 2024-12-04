@@ -394,7 +394,8 @@ class PickFirstLoadBalancer {
         if (lbConfig.getShuffleAddressList()) {
             endpointList = shuffled(endpointList);
         }
-        const rawAddressList = [].concat(...endpointList.map(endpoint => endpoint.addresses));
+        // const rawAddressList = [].concat(...endpointList.map(endpoint => endpoint.addresses));
+        const rawAddressList = endpointList;
         trace('updateAddressList([' + rawAddressList.map(address => (0, subchannel_address_1.subchannelAddressToString)(address)) + '])');
         if (rawAddressList.length === 0) {
             throw new Error('No addresses in endpoint list passed to pick_first');
